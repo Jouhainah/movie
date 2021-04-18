@@ -15,10 +15,10 @@
       </ion-card-header>
       <ion-card-content>
         <div class="signin-btns">
-          <ion-button  size="small" fill="solid" shape="round" class="loginbtn">
+          <ion-button  size="small" fill="solid" shape="round" class="loginbtn" (click)="gotoLoginpage()">
             Login
            </ion-button>
-           <ion-button  size="small" fill="outline" shape="round" color="light">
+           <ion-button  size="small" fill="outline" shape="round" color="light" (click)="registerUser()">
              Sign Up
             </ion-button>
          </div>
@@ -26,10 +26,10 @@
          <span>Or via Social Media</span>
         </div>
         <div class="social-btns">
-          <ion-button fill="clear"  class="facebookbtn ion-no-padding" >
-        <ion-img src="assets/images/facebook.png"></ion-img>
+          <ion-button fill="clear"  class="facebookbtn ion-no-padding" (click)="loginwithFacebook()">
+            <ion-img src="assets/images/facebook.png"></ion-img>
           </ion-button>
-          <ion-button fill="clear"  class="googlebtn ion-no-padding" >
+          <ion-button fill="clear"  class="googlebtn ion-no-padding" (click)="googleLogin()">
         <ion-img src="assets/images/google.png"></ion-img>
           </ion-button>
         </div>
