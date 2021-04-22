@@ -5,6 +5,14 @@
 export const environment = {
   production: false
 };
+export const firebaseConfig = {
+  apiKey: "AIzaSyCE82bKonOGK14t9ivhxLveIj9OVQUrJiU",
+  authDomain: "movie-ionic-f2a0a.firebaseapp.com",
+  projectId: "movie-ionic-f2a0a",
+  storageBucket: "movie-ionic-f2a0a.appspot.com",
+  messagingSenderId: "73541178533",
+  appId: "1:73541178533:web:64d55fb826c777afd6e94c"
+};
 
 /*
  * For easier debugging in development mode, you can import the following file
