@@ -1,6 +1,8 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-loginscreen',
   templateUrl: './loginscreen.page.html',
@@ -22,7 +24,7 @@ export class LoginscreenPage implements OnInit {
   
    validationFormUser: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private nav: NavController) { }
+  constructor(public formbuilder: FormBuilder, private nav: NavController, public authService: AuthService) { }
 
   ngOnInit() {
 
@@ -41,6 +43,14 @@ export class LoginscreenPage implements OnInit {
   
   LoginUser(value){
     console.log("Logged In")
+    try {
+      this.authService.loginFireauth(value).then(resp => {
+        console.log(resp);
+      }
+        )
+    } catch (error) {
+      
+    }
   }
 
   registerUser(){ 
