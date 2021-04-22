@@ -2,6 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginscreen',
@@ -24,7 +25,7 @@ export class LoginscreenPage implements OnInit {
   
    validationFormUser: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private nav: NavController, public authService: AuthService) { }
+  constructor(public formbuilder: FormBuilder, private nav: NavController, public authService: AuthService,private router: Router) { }
 
   ngOnInit() {
 
@@ -46,6 +47,7 @@ export class LoginscreenPage implements OnInit {
     try {
       this.authService.loginFireauth(value).then(resp => {
         console.log(resp);
+        this.router.navigate(['tabs'])
       }
         )
     } catch (error) {
