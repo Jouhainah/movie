@@ -25,7 +25,7 @@ export class LoginscreenPage implements OnInit {
   
    validationFormUser: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private nav: NavController, public authService: AuthService,private router: Router) { }
+  constructor(public formbuilder: FormBuilder, private nav: NavController, private authService: AuthService,private router: Router) { }
 
   ngOnInit() {
 
