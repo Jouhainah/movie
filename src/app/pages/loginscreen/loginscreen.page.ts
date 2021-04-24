@@ -59,5 +59,8 @@ export class LoginscreenPage implements OnInit {
     this.nav.navigateForward(['signup'])
   }
   
+  forgotPassword(){
+    this.nav.navigateForward(['forgotpassword'])
+  }
 }
 

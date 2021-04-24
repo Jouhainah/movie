@@ -44,11 +44,11 @@
 
         </div>
          <div class="password_forgot">
-            <ion-button fill="clear" class="ion-no-padding">ForgotPasword?</ion-button>
+            <ion-button fill="clear" class="ion-no-padding" (click)="forgotPassword()">ForgotPasword?</ion-button>
          </div>
          <div class="sign-btn-wrap">
             <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!validationFormUser.valid" >Login</ion-button>
-           </div>
+          </div>
 
            <div class="text-tag">
            <span>Or via Social Media</span>
