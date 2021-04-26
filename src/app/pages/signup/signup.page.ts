@@ -58,7 +58,7 @@ export class SignupPage implements OnInit {
     this.showalert();
     //console.log("Signed In")
     try {
-      this.authService.UserRegistration(value).then(resp => {
+      this.authService.userRegistration(value).then(resp => {
         console.log(resp);
         if (resp.user){
           resp.user.updateProfile({
@@ -66,11 +66,10 @@ export class SignupPage implements OnInit {
             email: value.email,
             phoneNumber: value.phone,
 
-          });
-      
+          });      
         }
         this.loading.dismiss();
-        this.router.navigate(['loginscreen'])
+        this.Loading();
 
       }, error=>{
 
@@ -79,8 +78,8 @@ export class SignupPage implements OnInit {
 
       }
         )
-    } catch (eror) {
-      console.log(eror)
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -96,6 +95,22 @@ export class SignupPage implements OnInit {
       }]
     })
      await loading.present();
+  }
+
+  async Loading() {
+    const alert = await this.alertCtrl.create({
+      header: 'Thanks for signing up',
+      subHeader:'We\'re glad you\'re here',
+      message: 'Jump in and Get Started',
+      buttons:[{
+        text:'ok',
+        handler: ()=>{
+        this.navCtr.navigateBack(['loginscreen'])
+      }
+      }]
+    });
+
+    await alert.present();
   }
 
   async showalert(){
