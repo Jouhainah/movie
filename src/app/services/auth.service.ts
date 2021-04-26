@@ -25,8 +25,7 @@ export class AuthService {
     })
    }
 
-
-   UserRegistration(value){
+   userRegistration(value){
     return new Promise<any> ( (resolve, reject)=>{
       firebase.auth().createUserWithEmailAndPassword(value.email,value.password).then(
         res => resolve(res),
@@ -35,5 +34,14 @@ export class AuthService {
     })
   }
 
+  forgotPassword(value) {
+    return new Promise<any> ( (resolve, reject)=>{
+      firebase.auth().sendPasswordResetEmail(value.email).then(
+        res => resolve(res),
+        error => reject(error)
+      )
+    })
+  }
+    
   
 }
