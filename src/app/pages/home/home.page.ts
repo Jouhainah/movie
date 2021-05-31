@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Movie } from 'src/app/models/movies.interface';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
-  constructor() { }
+  public movieList: Observable<Movie[]>;
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
+    this.movieList = this.authService.getMovieList();
   }
-
 }

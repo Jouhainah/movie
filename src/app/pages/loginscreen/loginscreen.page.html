@@ -12,7 +12,7 @@
       <ion-img src="assets/images/header.jpg"></ion-img>
       <ion-card-content>
 
-    <form [formGroup]="validationFormUser" (ngSubmit)="LoginUser(validationFormUser.value)">
+    <form [formGroup]="validationFormUser" (ngSubmit)="loginUser(validationFormUser.value)">
         <div class="wrapform">
          <ion-item>
             <ion-input type="text" name="email" formControlName="email"  placeholder="Email">
@@ -50,7 +50,7 @@
             <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!validationFormUser.valid" >Login</ion-button>
           </div>
 
-           <div class="text-tag">
+          <!-- <div class="text-tag">
            <span>Or via Social Media</span>
            </div>
 
@@ -62,7 +62,7 @@
              <ion-img src="assets/images/google.png"></ion-img>
                </ion-button>
 
-             </div>
+             </div>-->
 
 
 

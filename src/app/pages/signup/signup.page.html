@@ -17,7 +17,7 @@
           Create Your account by filling up the form
           </ion-card-subtitle>
     </ion-card-header>
-        <form [formGroup]="ValidationFormUSer" (ngSubmit)="registerUser(ValidationFormUSer.value)">
+        <form [formGroup]="validationFormUSer" (ngSubmit)="registerUser()">
    <ion-card-content>
        <ion-item>
            <ion-input name="name" type="text" placeholder="FullName" formControlName="name">
@@ -28,7 +28,7 @@
        <div>
         <ng-container *ngFor="let validation of validationMessage.name">
 
-          <div class="error_message" *ngIf="ValidationFormUSer.get('name').hasError(validation.type) && (ValidationFormUSer.get('name').dirty || ValidationFormUSer.get('name').touched)">
+          <div class="error_message" *ngIf="validationFormUSer.get('name').hasError(validation.type) && (validationFormUSer.get('name').dirty || validationFormUSer.get('name').touched)">
               {{validation.message}}
           </div>
 
@@ -45,7 +45,7 @@
        <div>
         <ng-container *ngFor="let validation of validationMessage.phone">
 
-          <div class="error_message" *ngIf="ValidationFormUSer.get('phone').hasError(validation.type) && (ValidationFormUSer.get('phone').dirty || ValidationFormUSer.get('phone').touched)">
+          <div class="error_message" *ngIf="validationFormUSer.get('phone').hasError(validation.type) && (validationFormUSer.get('phone').dirty || validationFormUSer.get('phone').touched)">
               {{validation.message}}
           </div>
 
@@ -61,7 +61,7 @@
 
        <ng-container *ngFor="let validation of validationMessage.email">
 
-        <div class="error_message" *ngIf="ValidationFormUSer.get('email').hasError(validation.type) && (ValidationFormUSer.get('email').dirty || ValidationFormUSer.get('email').touched)">
+        <div class="error_message" *ngIf="validationFormUSer.get('email').hasError(validation.type) && (validationFormUSer.get('email').dirty || validationFormUSer.get('email').touched)">
             {{validation.message}}
         </div>
 
@@ -75,17 +75,17 @@
       
        <ng-container *ngFor="let validation of validationMessage.password">
 
-        <div class="error_message" *ngIf="ValidationFormUSer.get('password').hasError(validation.type) && (ValidationFormUSer.get('password').dirty || ValidationFormUSer.get('password').touched)">
+        <div class="error_message" *ngIf="validationFormUSer.get('password').hasError(validation.type) && (validationFormUSer.get('password').dirty || validationFormUSer.get('password').touched)">
             {{validation.message}}
         </div>
 
        </ng-container>
 
        <div class="sign-btn-wrap">
-          <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!ValidationFormUSer.valid" >Sign Up</ion-button>
+          <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!validationFormUSer.valid" >Sign Up</ion-button>
          </div>
 
-         <div class="text-tag">
+        <!-- <div class="text-tag">
          <span>Sign Up with</span>
          </div>
 
@@ -98,7 +98,7 @@
              </ion-button>
           
 
-           </div>
+           </div>-->
 
    </ion-card-content>
        </form>

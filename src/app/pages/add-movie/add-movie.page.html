@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>AddMovie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="addMovieForm" (submit)="addMovie()">
+    <ion-item>
+      <ion-label stacked>Movie Name</ion-label>
+      <ion-input
+        formControlName="name"
+        type="text"
+        placeholder="What's this movie called?"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Writer Name</ion-label>
+      <ion-input
+        formControlName="writers"
+        type="text"
+        placeholder="Who write this movie?"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Movie Director</ion-label>
+      <ion-textarea
+        formControlName="director"
+        type="text"
+        placeholder="Who is the director!"
+      >
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Story Line</ion-label>
+      <ion-input
+        formControlName="storyLine"
+        type="text"
+        placeholder="What's the movie's story?"
+      >
+      </ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Stars</ion-label>
+      <ion-input
+        formControlName="stars"
+        type="text"
+        placeholder="cast?"
+      >
+      </ion-input>
+    </ion-item>
+  
+
+    <ion-button expand="block" type="submit" [disabled]="!addMovieForm.valid">
+      Add Song
+    </ion-button>
+  </form>
+</ion-content>

@@ -7,23 +7,19 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  constructor(private nav: NavController) {}
 
-  constructor(private nav: NavController,) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  gotoLoginpage(){
+  gotoLoginpage() {
     this.nav.navigateForward(['loginscreen']);
   }
 
-  registerUser(){ 
-    this.nav.navigateForward(['signup'])
+  registerUser() {
+    this.nav.navigateForward(['signup']);
   }
 
-  loginwithFacebook(){}
+  loginwithFacebook() {}
 
-  googleLogin(){}
-
-
+  googleLogin() {}
 }

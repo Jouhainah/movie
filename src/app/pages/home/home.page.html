@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Movie List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['add-movie']" *ngIf="authService.isAdmin()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="padding">
+  <ion-item
+    *ngFor="let movie of movieList | async"
+    [routerLink]="['detail',movie.id]">
+    <ion-label>
+      <h2>{{ movie.name}}</h2>
+      <p>director Name: {{ movie.director }}</p>
+    </ion-label>
+  </ion-item>
 </ion-content>

@@ -1,49 +1,85 @@
-import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
+import {
+  PreloadAllModules,
+  RouterModule,
+  Routes,
+  CanActivate,
+} from '@angular/router';
+import {
+  AngularFireAuthGuard,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectauthorizedToHome = () => redirectLoggedInTo(['tabs']);
 
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectauthorizedToHome },
   },
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectauthorizedToHome },
   },
   {
     path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () =>
+      import('./pages/signup/signup.module').then((m) => m.SignupPageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectauthorizedToHome },
   },
   {
     path: 'forgotpassword',
-    loadChildren: () => import('./pages/forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
+    loadChildren: () =>
+      import('./pages/forgotpassword/forgotpassword.module').then(
+        (m) => m.ForgotpasswordPageModule
+      ),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectauthorizedToHome },
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'loginscreen',
-    loadChildren: () => import('./pages/loginscreen/loginscreen.module').then( m => m.LoginscreenPageModule)
+    loadChildren: () =>
+      import('./pages/loginscreen/loginscreen.module').then(
+        (m) => m.LoginscreenPageModule
+      ),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectauthorizedToHome },
   },
-  
+
   {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () =>
+      import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

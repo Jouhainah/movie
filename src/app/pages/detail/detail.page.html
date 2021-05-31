@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ movie?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h3>Artist</h3>
+  <p>The song {{ movie?.name }} was directed by {{ movie?.director }}.</p>
+
+  <h3>Album</h3>
+  <p>It was part of the {{ movie?.writers }} album.</p>
+
+  <h3>Description</h3>
+  <p>{{ movie?.storyLine }}</p>
+
+  <h3>cast</h3>
+  <p>{{ movie?.stars }}</p>
+
+  <ion-button expand="block" (click)="deleteMovie(movie.id,movie.name)" *ngIf="authService.isAdmin()"> DELETE MOVIE </ion-button>
+</ion-content>
