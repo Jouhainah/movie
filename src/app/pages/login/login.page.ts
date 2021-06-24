@@ -18,8 +18,4 @@ export class LoginPage implements OnInit {
   registerUser() {
     this.nav.navigateForward(['signup']);
   }
-
-  loginwithFacebook() {}
-
-  googleLogin() {}
 }

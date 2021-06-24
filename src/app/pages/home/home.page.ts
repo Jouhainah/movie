@@ -1,7 +1,9 @@
+import { AuthService } from 'src/app/services/auth.service';
+import { MovieService } from './../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/models/movies.interface';
-import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-home',
@@ -10,9 +12,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomePage implements OnInit {
   public movieList: Observable<Movie[]>;
-  constructor(public authService: AuthService) {}
+  constructor(
+    public movieService: MovieService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
-    this.movieList = this.authService.getMovieList();
+    this.movieList = this.movieService.getMovieList();
   }
 }

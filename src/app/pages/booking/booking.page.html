@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="netflix-dark">
+    <ion-title>{{ movie?.title }} Booking </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >  
+  <form [formGroup]="bookMovieForm" (submit)="bookMovie()">
+        <ion-item >
+          <h4 color="light" text-wrap>
+            Movie: <br> {{movie?.title}}
+          </h4>
+        </ion-item>
+        <ion-item >
+          <h4 color="light" text-wrap>
+            Time: <br> {{movie?.date}}
+          </h4>               
+        </ion-item>
+        <ion-item >
+          <h4 color="light" text-wrap>
+            Tickets: <br>
+            <ion-input type="text" name="totalseat" formControlName="totalseat"  placeholder="0">
+              </ion-input>
+          </h4>               
+        </ion-item>
+        <ion-item >
+          <h4 color="light" text-wrap>
+            Seats: <br>
+            <ion-input type="text" name="seats" formControlName="seats"  placeholder="0">
+              </ion-input>
+          </h4>               
+        </ion-item>
+        <ion-item >
+          <h4 color="light" text-wrap>
+            Total: <br>
+            <ion-input type="text" name="totalamount" formControlName="totalamount"  placeholder="$0">
+              </ion-input>
+          </h4>               
+        </ion-item>
+     
+        <ion-button expand="block" [routerLink]="['ticket']"> Get Ticket </ion-button>
+
+  </form>
+         
+
+</ion-content>  

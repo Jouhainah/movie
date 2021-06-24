@@ -9,7 +9,7 @@
     <ion-item>
       <ion-label stacked>Movie Name</ion-label>
       <ion-input
-        formControlName="name"
+        formControlName="title"
         type="text"
         placeholder="What's this movie called?"
       >
@@ -17,11 +17,21 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Writer Name</ion-label>
+      <ion-label stacked>Genre</ion-label>
       <ion-input
-        formControlName="writers"
+        formControlName="genre"
         type="text"
-        placeholder="Who write this movie?"
+        placeholder="Movie Genre?"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Duration</ion-label>
+      <ion-input
+        formControlName="duration"
+        type="text"
+        placeholder="Movie duration?"
       >
       </ion-input>
     </ion-item>
@@ -55,10 +65,28 @@
       >
       </ion-input>
     </ion-item>
-  
 
+    <ion-item>
+      <ion-label stacked>Date </ion-label>
+        <ion-datetime  formControlName="date" display-format="DD.MM.YYYY HH:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+    <ion-label> Select file to upload</ion-label>
+      <ion-img
+      [src]="imgSrc"
+      width="350px"
+      height="250px"
+    ></ion-img>
+    <ion-input
+      type="file"
+      accept="image/*"
+      formControlName="imageUrl"
+      #fileUploader
+      (change)="showPreview($event)"
+    ></ion-input>
+  </ion-item>
     <ion-button expand="block" type="submit" [disabled]="!addMovieForm.valid">
-      Add Song
+      Add Movie
     </ion-button>
-  </form>
+  </form> 
 </ion-content>

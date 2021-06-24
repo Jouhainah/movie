@@ -1,8 +1,10 @@
+import { BookingPage } from './../booking/booking.page';
+import { AuthService } from 'src/app/services/auth.service';
 import { Movie } from 'src/app/models/movies.interface';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-detail',
@@ -11,24 +13,28 @@ import { AlertController } from '@ionic/angular';
 })
 export class DetailPage implements OnInit {
   public movie: Movie;
-
+  private movieId: string;
   constructor(
-    public authService: AuthService,
+    public movieService: MovieService,
     private route: ActivatedRoute,
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    public authService: AuthService,
+    private nav: NavController
   ) {}
 
   ngOnInit() {
-    const movieId: string = this.route.snapshot.paramMap.get('id');
-    this.authService.getMovieDetail(movieId).subscribe((movie) => {
+    this.movieId = this.route.snapshot.paramMap.get('id');
+    this.movieService.getMovieDetail(this.movieId).subscribe((movie) => {
       this.movie = movie;
     });
   }
-
-  async deleteMovie(movieId: string, name: string): Promise<void> {
+  close() {
+    this.nav.navigateForward(['tabs/tabs/home']);
+  }
+  async deleteMovie(movieId: string, title: string): Promise<void> {
     const alert = await this.alertController.create({
-      message: `Are you sure you want to delete ${name}?`,
+      message: `Are you sure you want to delete ${title}?`,
       buttons: [
         {
           text: 'Cancel',
@@ -40,7 +46,7 @@ export class DetailPage implements OnInit {
         {
           text: 'Okay',
           handler: () => {
-            this.authService.deleteMovie(movieId).then(() => {
+            this.movieService.deleteMovie(movieId).then(() => {
               this.router.navigateByUrl('tabs');
             });
           },
@@ -50,4 +56,18 @@ export class DetailPage implements OnInit {
 
     await alert.present();
   }
+
+  /*async book(event: Event) {
+   const popover = await this.popoverController.create({
+      component: BookingPage,
+      componentProps: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+    custom_id: this.movieId,
+        translucent: true,
+        // eslint-disable-next-line object-shorthand
+        event: event,
+      },
+    });
+    popover.present();
+  }*/
 }

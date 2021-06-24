@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Movie List</ion-title>
+  <ion-toolbar color="netflix-dark">
+    <ion-title><img class="logo-header" src="../../../assets/images/title.jpeg"></ion-title>
     <ion-buttons slot="end">
       <ion-button [routerLink]="['add-movie']" *ngIf="authService.isAdmin()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -9,12 +9,43 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="padding">
-  <ion-item
-    *ngFor="let movie of movieList | async"
-    [routerLink]="['detail',movie.id]">
-    <ion-label>
-      <h2>{{ movie.name}}</h2>
-      <p>director Name: {{ movie.director }}</p>
-    </ion-label>
-  </ion-item>
+
+    <img class="img-intro" src="../../../assets/images/unnamed.jpg">
+    <ion-button expand="full" color="netflix-dark">Reserver maintenant</ion-button>
+    <p class="box-title">Aujourd'hui shows</p>
+      <div class="scroll-box">
+          <div class="movie"  *ngFor="let movie of movieList | async"
+          [routerLink]="['detail',movie.id]">
+            <ion-item>
+              
+              <ion-label>
+                <h2>{{ movie.title}}</h2>
+                <ion-img
+                [src]='movie.imageUrl'
+              ></ion-img>
+                
+                <p>Duration: {{ movie.duration }}</p>
+
+              </ion-label>
+            </ion-item>
+          </div>
+        </div>
+        <p class="box-title">Semaine suivante shows</p>
+        <div class="scroll-box">
+            <div class="movie"  *ngFor="let movie of movieList | async"
+            [routerLink]="['detail',movie.id]">
+              <ion-item>
+                
+                <ion-label>
+                  <h2>{{ movie.title}}</h2>
+                  <ion-img
+                  [src]='movie.imageUrl'
+                ></ion-img>
+                  
+                  <p>Duration: {{ movie.duration }}</p>
+  
+                </ion-label>
+              </ion-item>
+            </div>
+          </div>
 </ion-content>

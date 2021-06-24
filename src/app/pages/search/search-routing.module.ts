@@ -6,8 +6,13 @@ import { SearchPage } from './search.page';
 const routes: Routes = [
   {
     path: '',
-    component: SearchPage
-  }
+    component: SearchPage,
+  },
+  {
+    path: 'detail/:id',
+    loadChildren: () =>
+      import('../detail/detail.module').then((m) => m.DetailPageModule),
+  },
 ];
 
 @NgModule({

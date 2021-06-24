@@ -1,10 +1,9 @@
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Movie } from './../models/movies.interface';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 export interface UserPro {
   username: string;
@@ -72,44 +71,10 @@ export class AuthService {
     });
   }
 
-  addMovie(
-    name: string,
-    storyLine: string,
-    director: string,
-    writers: string,
-    stars: string
-  ): Promise<void> {
-    const id = this.firestore.createId();
-
-    return this.firestore.doc(`movieList/${id}`).set({
-      id,
-      name,
-      storyLine,
-      director,
-      writers,
-      stars,
-    });
-  }
-
-  getMovieList(): Observable<Movie[]> {
-    return this.firestore.collection<Movie>(`movieList`).valueChanges();
-  }
-
-  getMovieDetail(movieId: string): Observable<Movie> {
-    return this.firestore
-      .collection('movieList')
-      .doc<Movie>(movieId)
-      .valueChanges();
-  }
-
-  deleteMovie(movieId: string): Promise<void> {
-    return this.firestore.doc(`movieList/${movieId}`).delete();
-  }
-
   setUserProfile(data) {
     this.profile$.next(data);
   }
-  getProfile() {
+  getProfile(){
     return this.profile$.value;
   }
 
@@ -126,9 +91,10 @@ export class AuthService {
   }
 
   logout() {
-    this.auth.signOut().then(() => {
+    localStorage.removeItem('profile');
     localStorage.clear();
-    this.profile$.next(null);
+    this.auth.signOut().then(() => {
+      this.profile$.next(null);
 
       this.route.navigate(['/', 'login']);
     });

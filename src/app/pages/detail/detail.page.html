@@ -1,24 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+  <ion-toolbar color="netflix-dark">
+    <ion-title>{{ movie?.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>{{ movie?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
+  <ion-content>
+    <div class="bg-img"  style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), #222428),url({{movie?.imageUrl}}) ; ">
+      <div class="ion-padding">
+        <div class="img-header">
+            <img src="{{ movie?.imageUrl }}">
+        </div>
+        <div class="tags">
+          <p>{{ movie?.genre }}</p>
+          <p class="green" >{{ movie?.date }}</p>
+        </div>
+        <h5>Directed by : {{ movie?.director }}.</h5>
+        <h5>Duration: : {{ movie?.duration }}</h5>
+        <h5>Description: {{ movie?.storyLine }}</h5>
+        <h5>Cast: {{ movie?.stars }}</h5>  
+     </div>  
+     <ion-button expand="block"  color="netflix-red" (click)="deleteMovie(movie.id,movie.title)" *ngIf="authService.isAdmin()"> <ion-icon slot="start" name="trash"></ion-icon>
+      Delete Movie </ion-button>
+    <ion-button expand="block" [routerLink]="['update-movie',movie?.id]" *ngIf="authService.isAdmin()"> UPDATE MOVIE </ion-button>
+    <ion-button expand="block" [routerLink]="['booking',movie?.id]"> Book </ion-button>
+</div>
+        
 
-<ion-content class="ion-padding">
-  <h3>Artist</h3>
-  <p>The song {{ movie?.name }} was directed by {{ movie?.director }}.</p>
 
-  <h3>Album</h3>
-  <p>It was part of the {{ movie?.writers }} album.</p>
 
-  <h3>Description</h3>
-  <p>{{ movie?.storyLine }}</p>
 
-  <h3>cast</h3>
-  <p>{{ movie?.stars }}</p>
 
-  <ion-button expand="block" (click)="deleteMovie(movie.id,movie.name)" *ngIf="authService.isAdmin()"> DELETE MOVIE </ion-button>
-</ion-content>
+</ion-content>  

@@ -74,6 +74,22 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
+  {
+    path: 'update-movie',
+    loadChildren: () =>
+      import('./pages/update-movie/update-movie.module').then(
+        (m) => m.UpdateMoviePageModule
+      ),
+  },
+  {
+    path: 'booking',
+    loadChildren: () =>
+      import('./pages/booking/booking.module').then((m) => m.BookingPageModule),
+  },
+  {
+    path: 'ticket',
+    loadChildren: () => import('./pages/ticket/ticket.module').then( m => m.TicketPageModule)
+  },
 ];
 
 @NgModule({

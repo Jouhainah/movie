@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Search</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content >
+  <ion-searchbar
+    showcancelbutton=""
+    (ionInput)="filterList($event)"
+  ></ion-searchbar>
 
-<ion-content>
-
+  <ion-list lines="none">
+    <ion-item *ngFor="let movieItem of movieList"
+    [routerLink]="['detail',movieItem.id]">
+      <ion-label class="ion-text-wrap">
+        <ion-text color="primary">
+          <h3>{{ movieItem.title }}</h3>
+        </ion-text>
+        <p>{{ movieItem.director}} -- {{ movieItem.stars }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

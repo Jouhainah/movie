@@ -113,7 +113,7 @@ export class SignupPage implements OnInit {
                 });
             });
           this.loading.dismiss();
-          this.Loading();
+          this.lloading();
         },
         (error) => {
           this.loading.dismiss();
@@ -141,7 +141,7 @@ export class SignupPage implements OnInit {
     await loading.present();
   }
 
-  async Loading() {
+  async lloading() {
     const alert = await this.alertCtrl.create({
       header: 'Thanks for signing up',
       subHeader: "We're glad you're here",

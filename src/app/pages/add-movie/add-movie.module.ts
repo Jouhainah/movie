@@ -17,6 +17,6 @@ import { AddMoviePage } from './add-movie.page';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [AddMoviePage]
+  declarations: [AddMoviePage],
 })
 export class AddMoviePageModule {}

@@ -12,7 +12,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { firebaseConfig } from '../environments/environment';
-
+import { FormsModule } from '@angular/forms';
+import { DetailPageModule } from './pages/detail/detail.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,6 +25,8 @@ import { firebaseConfig } from '../environments/environment';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    FormsModule,
+    DetailPageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

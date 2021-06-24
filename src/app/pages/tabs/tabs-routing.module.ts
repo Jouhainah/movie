@@ -7,17 +7,35 @@ const routes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
-    children:[
-      {path:"home",loadChildren:()=> import('src/app/pages/home/home.module').then(res =>res.HomePageModule)},
-      {path:"search",loadChildren:()=> import('src/app/pages/search/search.module').then(res =>res.SearchPageModule)},
-      {path:"profile",loadChildren:()=> import('src/app/pages/profile/profile.module').then(res =>res.ProfilePageModule)}
-    ]
+    children: [
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('src/app/pages/home/home.module').then(
+            (res) => res.HomePageModule
+          ),
+      },
+      {
+        path: 'search',
+        loadChildren: () =>
+          import('src/app/pages/search/search.module').then(
+            (res) => res.SearchPageModule
+          ),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('src/app/pages/profile/profile.module').then(
+            (res) => res.ProfilePageModule
+          ),
+      },
+    ],
   },
   {
-    path:"",
-    redirectTo:"tabs/home",
-    pathMatch:"full"
-  }
+    path: '',
+    redirectTo: 'tabs/home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

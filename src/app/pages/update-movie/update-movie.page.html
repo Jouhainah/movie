@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>updateMovie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content padding>
+  <form [formGroup]="updateMovieForm" (submit)="updateMovie()">
+    <ion-item>
+      <ion-label stacked>Movie Name</ion-label>
+      <ion-input
+        formControlName="title"
+        type="text"
+        value="{{ movie?.title }} "
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Genre</ion-label>
+      <ion-input
+        formControlName="genre"
+        type="text"
+        value="{{ movie?.genre }} "
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Duration</ion-label>
+      <ion-input
+        formControlName="duration"
+        type="text"
+        value="{{ movie?.duration }} "
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Movie Director</ion-label>
+      <ion-textarea
+        formControlName="director"
+        type="text"
+        value="{{ movie?.director }} "
+      >
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Story Line</ion-label>
+      <ion-input
+        formControlName="storyLine"
+        type="text"
+        value="{{ movie?.storyLine }} "
+      >
+      </ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Stars</ion-label>
+      <ion-input
+        formControlName="stars"
+        type="text"
+        value="{{ movie?.stars }} "
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Date </ion-label>
+        <ion-datetime  formControlName="date" display-format="DD.MM.YYYY HH:mm" value="{{ movie?.date }}"></ion-datetime>
+    </ion-item>
+  
+
+    <ion-button expand="block" type="submit" [disabled]="!updateMovieForm.valid">
+      Add Movie
+    </ion-button>
+  </form>
+</ion-content>
